@@ -131,3 +131,13 @@ cuna2(X,Y):-(cun1(Y,X);cuna1(Y,X)), mujer(X).
 
 cunado(X,Y):-cun1(X,Y);cun2(X,Y).
 cunada(X,Y):-cuna1(X,Y);cuna2(X,Y).
+
+%Suegra
+suegra(X,Y):-madre(X,W),(esposa(W,Y);esposo(W,Y)).
+%sUEGRA
+suegro(X,Y):-padre(X,W),(esposa(W,Y);esposo(W,Y)).
+
+%nuera
+nuera(X,Y):-(suegra(Y,X);suegro(Y,X)),mujer(X).
+%nuerO
+nuero(X,Y):-(suegra(Y,X);suegro(Y,X)),hombre(X).

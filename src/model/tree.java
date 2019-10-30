@@ -5,7 +5,10 @@
  */
 package model;
 
+import java.util.Hashtable;
+import java.util.Map;
 import org.jpl7.Query;
+import org.jpl7.Term;
 
 /**
  *
@@ -17,6 +20,12 @@ public class tree {
     private String person1;
     private String person2;
     private String finalMessage;
+    ///               Part A
+    private String personA;
+    private String relation;
+
+   
+    
     public String getPerson1() {
         return person1;
     }
@@ -39,6 +48,27 @@ public class tree {
     public String getFinalMessage() {
         return finalMessage;
     }
+
+    public void setFinalMessage(String finalMessage) {
+        this.finalMessage = finalMessage;
+    }
+    
+     public String getPersonA() {
+        return personA;
+    }
+
+    public void setPersonA(String personA) {
+        this.personA = personA;
+    }
+
+    public String getRelation() {
+        return relation;
+    }
+
+    public void setRelation(String relation) {
+        this.relation = relation;
+    }
+    
     
     public Query connect_prolog(){
         Query conection=null;
@@ -50,6 +80,23 @@ public class tree {
             System.out.println("------------------------------Error Conection prolog: "+e.getMessage());
         }
         return conection;
+    }
+    public void search_by_relation(){
+         Query con=connect_prolog();
+         this.personA=this.personA.replace(" ", "_");
+         this.personA=this.personA.toLowerCase();
+         if(con==null){
+            System.out.println("-----------------------------------------------------Se ha devuelto una coneccion nula ");
+        }else{
+            this.finalMessage="Base del conocimiento agregada con exito:\n";
+        }
+         this.relation=this.relation.toLowerCase();
+         if(this.relation=="cuñado"){
+             this.relation="cunado";
+         }
+         String command=this.relation+"(X,"+this.personA+").";
+         this.finalMessage=finalMessage+this.relation+"/s de "+this.personA+":\n"+ExecuteReturn(command);
+
     }
     
     public void relation(){
@@ -87,7 +134,18 @@ public class tree {
         if(con==null){
             System.out.println("-----------------------------------------------------Se ha devuelto una coneccion nula ");
         }else{
-            this.finalMessage="Base del conocimiento agregada con exito:"+con.toString()+"\n";
+                try {
+                    if(this.finalMessage.equals("") || this.finalMessage==null){
+
+                    this.finalMessage="Base del conocimiento agregada con exito:\n";
+                }else{
+                    this.finalMessage=this.finalMessage+"\n-------------------------------------------------\n";
+                }
+            } catch (Exception e) {
+                    System.out.println("-----------------------------------------------------------Relation class tree["+e.getMessage());
+            }
+            
+            
         }
         this.finalMessage=finalMessage+Execute(q_padre,"padre",tmp_person1,tmp_person2);
         this.finalMessage=finalMessage+Execute(q_madre,"madre",tmp_person1,tmp_person2);
@@ -113,6 +171,24 @@ public class tree {
         this.finalMessage=finalMessage+Execute(q_bisabuela,"bisabuela",tmp_person1,tmp_person2);
     }
     
+    public String ExecuteReturn(String consult){
+        String solution="";
+        Query execute_query=null;
+        try{
+            
+            execute_query=new Query(consult);
+            while ( execute_query.hasMoreSolutions() ){
+                String AuxSolution=execute_query.nextSolution().get("X").toString();
+                solution=solution+"\n"+AuxSolution;
+                System.out.println( "X = " + solution);
+            }
+            
+            
+        }catch(Exception ex){
+            System.out.println("-------------------Error Executing :"+consult+": "+ex.getMessage());
+        }
+        return solution;
+    }
     public String Execute(String consult,String relation,String tmp_person1,String tmp_person2){
         String solution=null;
         Query execute_query=null;

@@ -38,6 +38,9 @@ public class index extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtResults = new javax.swing.JTextArea();
         btnChange = new javax.swing.JButton();
+        txtPersonA = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        cmbRelationship = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -49,6 +52,12 @@ public class index extends javax.swing.JFrame {
         });
 
         jLabel1.setText("Persona 1");
+
+        txtPerson2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPerson2ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Persona 2");
 
@@ -74,22 +83,20 @@ public class index extends javax.swing.JFrame {
             }
         });
 
+        txtPersonA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPersonAActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("A:");
+
+        cmbRelationship.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Padre", "Madre", "Hijo", "Hija", "Esposo", "Esposa", "Hermano", "Hermana", "Tio", "Tia", "Sobrino", "Sobrina", "Abuelo", "Abuela", "Nieto", "Nieta", "Primo", "Prima", "Bisabuelo", "Bisabuela", "Cuñado", "Cuñada", "Suegro", "Suegra", " ", " ", " ", " " }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnFind, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtPerson1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtPerson2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(274, 274, 274))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -98,15 +105,50 @@ public class index extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(279, 279, 279)
                         .addComponent(btnChange)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(jLabel3)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 188, Short.MAX_VALUE)
+                                .addComponent(btnFind, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(197, 197, 197))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtPersonA, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(50, 50, 50)
+                                .addComponent(cmbRelationship, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtPerson2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPerson1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPerson1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtPersonA, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbRelationship, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(txtPerson1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnChange)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -130,11 +172,29 @@ public class index extends javax.swing.JFrame {
     private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
                 // TODO add your handling code here:
                 tree ar = new tree();
-                 ar.setPerson1(txtPerson1.getText());
-                ar.setPerson2(txtPerson2.getText());
-                ar.relation();
-                System.out.println("arbolito: "+ar.getFinalMessage());
-                txtResults.setText(ar.getFinalMessage());
+                System.out.println("txtpersonA:"+txtPersonA.getText()+"/");
+                System.out.println("txtperson1:"+txtPerson1.getText()+"/");
+                System.out.println("txtperson2:"+txtPerson2.getText()+"/");
+                ar.setFinalMessage("");
+               if (txtPersonA.getText().equals("")==false) {
+                   
+                   ar.setPersonA(txtPersonA.getText());
+                   ar.setRelation(cmbRelationship.getSelectedItem().toString());
+                   ar.search_by_relation();
+                   System.out.println("A: "+ar.getFinalMessage());
+                   txtResults.setText(ar.getFinalMessage());
+                }
+               if(txtPerson1.getText().equals("")==false && txtPerson2.getText().equals("")==false){
+                    ar.setPerson1(txtPerson1.getText());
+                    ar.setPerson2(txtPerson2.getText());
+                    ar.relation();
+                    System.out.println("arbolito: "+ar.getFinalMessage());
+                    txtResults.setText(ar.getFinalMessage());
+
+               }
+               
+                
+                
                 
     }//GEN-LAST:event_btnFindActionPerformed
 
@@ -145,6 +205,14 @@ public class index extends javax.swing.JFrame {
         txtPerson1.setText(person2);
         txtPerson2.setText(person1);
     }//GEN-LAST:event_btnChangeActionPerformed
+
+    private void txtPerson2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPerson2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPerson2ActionPerformed
+
+    private void txtPersonAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPersonAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPersonAActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,11 +254,14 @@ public class index extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChange;
     private javax.swing.JButton btnFind;
+    private javax.swing.JComboBox<String> cmbRelationship;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtPerson1;
     private javax.swing.JTextField txtPerson2;
+    private javax.swing.JTextField txtPersonA;
     private javax.swing.JTextArea txtResults;
     // End of variables declaration//GEN-END:variables
 }
