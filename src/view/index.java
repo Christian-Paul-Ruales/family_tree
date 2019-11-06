@@ -69,10 +69,10 @@ public class index extends javax.swing.JFrame {
             }
         });
 
+        txtResults.setEditable(false);
         txtResults.setColumns(20);
         txtResults.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtResults.setRows(5);
-        txtResults.setEnabled(false);
         jScrollPane1.setViewportView(txtResults);
 
         btnChange.setBackground(new java.awt.Color(255, 255, 255));

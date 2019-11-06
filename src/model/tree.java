@@ -91,7 +91,7 @@ public class tree {
             this.finalMessage="Base del conocimiento agregada con exito:\n";
         }
          this.relation=this.relation.toLowerCase();
-         if(this.relation=="cuñado"){
+         if(this.relation.equals("cuñado")){
              this.relation="cunado";
          }
          String command=this.relation+"(X,"+this.personA+").";
@@ -179,7 +179,11 @@ public class tree {
             execute_query=new Query(consult);
             while ( execute_query.hasMoreSolutions() ){
                 String AuxSolution=execute_query.nextSolution().get("X").toString();
-                solution=solution+"\n"+AuxSolution;
+                if(solution.contains(AuxSolution)==false){
+                    solution=solution+"\n"+AuxSolution;
+                }
+                
+                
                 System.out.println( "X = " + solution);
             }
             
@@ -189,6 +193,8 @@ public class tree {
         }
         return solution;
     }
+    
+    
     public String Execute(String consult,String relation,String tmp_person1,String tmp_person2){
         String solution=null;
         Query execute_query=null;
